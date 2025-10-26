@@ -3,7 +3,8 @@ import { resumeData } from "@/data/resumeData";
 const AboutCommand = () => {
   return (
     <div className="space-y-3 fade-in">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="terminal-prompt font-bold text-lg mb-4">About Me</div>
+      <div className="flex items-center gap-2 mb-2">
         <div className="text-2xl font-bold terminal-prompt">{resumeData.name}</div>
       </div>
       <div className="text-muted-foreground mb-2">{resumeData.title}</div>

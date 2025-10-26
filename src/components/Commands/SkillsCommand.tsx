@@ -16,7 +16,7 @@ const getIconForCategory = (category: string) => {
 const SkillsCommand = () => {
   return (
     <div className="space-y-4 fade-in">
-      <div className="terminal-prompt font-bold text-lg mb-4">Technical Skills</div>
+      <div className="terminal-prompt font-bold text-lg mb-4">Skills</div>
       
       {resumeData.skills.map((skillGroup, index) => (
         <div key={index} className="space-y-2">

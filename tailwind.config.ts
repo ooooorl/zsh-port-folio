@@ -54,7 +54,7 @@ export default {
       },
       fontFamily: {
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', 'monospace'],
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'Segoe UI', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

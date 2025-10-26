@@ -8,7 +8,7 @@ export const useTerminal = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [currentCommand, setCurrentCommand] = useState("");
 
-  // Add welcome message with neofetch on mount
+  // Add welcome message on mount
   useEffect(() => {
     const welcomeOutput: CommandOutput = {
       id: crypto.randomUUID(),
@@ -29,14 +29,7 @@ export const useTerminal = () => {
       timestamp: new Date(),
     };
     
-    const neofetchOutput: CommandOutput = {
-      id: crypto.randomUUID(),
-      command: "neofetch",
-      output: commands.neofetch.execute(),
-      timestamp: new Date(),
-    };
-    
-    setHistory([welcomeOutput, neofetchOutput]);
+    setHistory([welcomeOutput]);
   }, []);
 
   const executeCommand = useCallback((input: string) => {

@@ -80,7 +80,7 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full bg-transparent outline-none text-terminal-text caret-terminal-prompt"
+            className="w-full bg-transparent outline-none text-terminal-text caret-transparent"
             spellCheck={false}
             autoComplete="off"
             autoFocus
