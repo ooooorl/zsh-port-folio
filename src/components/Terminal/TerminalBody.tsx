@@ -72,6 +72,7 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
       
       <div className="flex gap-2 mt-6 items-center">
         <span className="terminal-prompt select-none">➜</span>
+        <span className="cursor-blink terminal-prompt">▋</span>
         <div className="relative flex-1">
           <input
             ref={inputRef}
@@ -91,7 +92,6 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
             </div>
           )}
         </div>
-        <span className="cursor-blink terminal-prompt">▋</span>
       </div>
       
       <div ref={terminalEndRef} />

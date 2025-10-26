@@ -1,109 +1,107 @@
 import { ResumeData } from "@/types/terminal";
 
 export const resumeData: ResumeData = {
-  name: "John Doe",
-  title: "Full Stack Developer",
-  location: "San Francisco, CA",
-  email: "john.doe@example.com",
-  github: "github.com/johndoe",
-  linkedin: "linkedin.com/in/johndoe",
-  website: "johndoe.dev",
+  name: "Orly O. Plaza",
+  title: "Software & Backend Developer",
+  location: "Davao City, Philippines",
+  email: "plaza.orly.omeles@gmail.com",
+  github: "github.com/orlyplaza",
+  linkedin: "linkedin.com/in/orlyplaza",
+  website: "orlyplaza.dev",
   
   about: [
-    "Passionate full-stack developer with 5+ years of experience building scalable web applications.",
-    "Specialized in React, TypeScript, Node.js, and modern cloud technologies.",
-    "Love creating beautiful, performant user experiences and solving complex problems.",
-    "Open source enthusiast and continuous learner."
+    "A software and backend developer with 2+ years of professional experience in designing and implementing robust RESTful APIs.",
+    "Proficient in Python, Django REST Framework, and Docker, with experience using AWS services (S3, Lambda, IAM, EC2, Transcribe).",
+    "Skilled in optimizing backend systems, enhancing security, and delivering efficient, scalable solutions.",
+    "Actively expanding expertise in cloud computing and AWS architecture, eager to contribute technical skills while growing in a collaborative, impactful environment."
   ],
   
   skills: [
     {
-      category: "Languages",
-      items: ["TypeScript", "JavaScript", "Python", "Go", "SQL"]
+      category: "Programming Languages",
+      items: ["Python"]
     },
     {
-      category: "Frontend",
-      items: ["React", "Next.js", "Vue.js", "Tailwind CSS", "Redux"]
+      category: "Libraries & Frameworks",
+      items: ["Django", "Django REST", "FastAPI", "Flask", "Webhook", "Websocket", "Celery", "Redis", "Unittest", "Pytest", "OpenAI API"]
     },
     {
-      category: "Backend",
-      items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"]
+      category: "Cloud & DevOps",
+      items: ["AWS S3", "AWS Transcribe", "AWS DynamoDB", "AWS EC2", "AWS Lambda", "AWS IAM", "Terraform", "Docker", "Nginx", "Linux", "Backblaze", "Heroku"]
     },
     {
-      category: "DevOps",
-      items: ["Docker", "Kubernetes", "AWS", "CI/CD", "GitHub Actions"]
+      category: "Development Tools",
+      items: ["Git", "GitHub", "Bitbucket", "Render", "Vercel", "Jira", "Clockify", "Postman", "pgAdmin"]
     },
     {
-      category: "Tools",
-      items: ["Git", "VS Code", "Figma", "Linear", "Postman"]
+      category: "Databases",
+      items: ["PostgreSQL", "DynamoDB", "SQLite 3"]
     }
   ],
   
   experience: [
     {
-      title: "Senior Full Stack Developer",
-      company: "Tech Startup Inc.",
-      period: "2022 - Present",
+      title: "Software Developer",
+      company: "Ingenuity Software Global Consulting, Inc.",
+      period: "Feb 2024 - Present",
       description: [
-        "Led development of microservices architecture serving 100K+ daily users",
-        "Improved application performance by 60% through optimization and caching strategies",
-        "Mentored junior developers and established best practices for code quality",
-        "Designed and implemented RESTful APIs and GraphQL endpoints"
+        "Collaborated with development teams to determine application requirements, improving project clarity and reducing revision cycles by 30%",
+        "Developed backend components that optimized application performance, achieving 50% lower latency and 99.9% uptime for high-availability systems",
+        "Implemented automated report file transcription using Amazon Transcribe, reducing manual transcription efforts by 90% and improving accuracy by 95%",
+        "Enhanced security for a scheduling platform by refining authenticated user permissions, ensuring better data protection",
+        "Developed and maintained backend services to handle tournament creation, tee time booking, registration workflows, payment gateways, and score processing",
+        "Engineered a file upload endpoint similar to Google Drive, integrating role-based access management and upload limitations",
+        "Established a WebSocket connection enabling RFI users to communicate directly with Case Manager in real-time"
       ]
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Agency Co.",
-      period: "2020 - 2022",
+      title: "Software Developer (Part-Time)",
+      company: "University of the Philippines Mindanao",
+      period: "Sep 2023 - Dec 2024",
       description: [
-        "Built responsive web applications for Fortune 500 clients",
-        "Collaborated with designers to implement pixel-perfect UIs",
-        "Integrated third-party APIs and payment systems",
-        "Maintained 95%+ test coverage across all projects"
+        "Developed an API for data analytics for the Cacao, Coffee and Cavendish banana value chain using Python 3 and Django REST framework",
+        "Developed an automation script that efficiently transferred data from CSV files to a database, reducing manual input time by 80%",
+        "Delivered weekly progress reports, ensuring stakeholders were informed of development milestones and any potential challenges",
+        "Developed a company website using Google Sites and enhanced existing templates with JavaScript and Bootstrap"
       ]
     },
     {
-      title: "Frontend Developer",
-      company: "Creative Studio",
-      period: "2019 - 2020",
+      title: "Python Developer Intern",
+      company: "Valens Research",
+      period: "April 2023 - July 2023",
       description: [
-        "Developed interactive websites and web applications",
-        "Implemented modern JavaScript frameworks and build tools",
-        "Optimized websites for SEO and performance",
-        "Worked closely with UX team to enhance user experience"
+        "Developed a testable Python script for data scraping, ensuring 100% data consistency across production and staging environments",
+        "Utilized Django ORM to enhance database manipulation efficiency, reducing query execution time by 25%",
+        "Collaborated closely with the analyst team to achieve 98% accuracy in aligning gathered data with production datasets",
+        "Actively participated in daily Scrum meetings, resulting in a 30% increase in team productivity during Agile development"
+      ]
+    },
+    {
+      title: "Research and Development Associate Intern",
+      company: "MediaOne Software Solutions",
+      period: "June 2022 - Sep 2022",
+      description: [
+        "Developed a PawTracer solution utilizing Arduino and the Neo-6M module",
+        "Designed and implemented a tracking system to meet client specifications using C++"
       ]
     }
   ],
   
   education: [
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University of California",
-      period: "2015 - 2019",
-      description: "Graduated with Honors. Focus on Software Engineering and Web Development."
+      degree: "Bachelor of Science in Computer Engineering",
+      institution: "Holy Cross of Davao College",
+      period: "June 2018 - July 2023",
+      description: "Graduated with a degree in Computer Engineering. Second placer in the 12th Engineering Congress CODEE for 'Dyscalculia Immediate Mode of Assessment in Learning System (DysIMAL)' in Region 11."
     }
   ],
   
   projects: [
     {
-      name: "TaskFlow",
-      description: "A modern project management tool with real-time collaboration features",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "WebSocket"],
-      link: "taskflow.example.com",
-      github: "github.com/johndoe/taskflow"
-    },
-    {
-      name: "DevBlog",
-      description: "Personal technical blog with markdown support and syntax highlighting",
-      technologies: ["Next.js", "MDX", "Tailwind CSS", "Vercel"],
-      link: "blog.johndoe.dev",
-      github: "github.com/johndoe/devblog"
-    },
-    {
-      name: "API Analytics",
-      description: "Real-time analytics dashboard for API monitoring and metrics",
-      technologies: ["Vue.js", "D3.js", "Express", "MongoDB", "Redis"],
-      github: "github.com/johndoe/api-analytics"
+      name: "Chatbot AI (RAG)",
+      description: "A PDF-based Question-Answering System built using Streamlit, LangChain, and Ollama LLM with DeepSeek-R1",
+      technologies: ["Python", "Streamlit", "LangChain", "Ollama LLM", "Vector Embeddings"],
+      github: "github.com/orlyplaza/chatbot-rag"
     }
   ]
 };

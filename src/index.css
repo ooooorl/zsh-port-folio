@@ -8,38 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Terminal color palette */
-    --background: 240 10% 8%;
-    --foreground: 0 0% 95%;
+    /* Terminal color palette - Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
-    --terminal-bg: 240 10% 8%;
-    --terminal-text: 0 0% 95%;
-    --terminal-prompt: 142 71% 45%;
-    --terminal-command: 210 100% 70%;
-    --terminal-border: 240 6% 20%;
-    --terminal-header: 240 8% 12%;
+    --terminal-bg: 0 0% 100%;
+    --terminal-text: 0 0% 10%;
+    --terminal-prompt: 142 71% 35%;
+    --terminal-command: 210 100% 45%;
+    --terminal-border: 0 0% 85%;
+    --terminal-header: 0 0% 95%;
     
-    --card: 240 10% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
 
-    --primary: 142 71% 45%;
-    --primary-foreground: 240 10% 8%;
+    --primary: 142 71% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 100% 70%;
-    --secondary-foreground: 240 10% 8%;
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 6% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 142 71% 45%;
-    --accent-foreground: 240 10% 8%;
+    --accent: 142 71% 35%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 20%;
-    --input: 240 6% 15%;
-    --ring: 142 71% 45%;
+    --border: 0 0% 85%;
+    --input: 0 0% 95%;
+    --ring: 142 71% 35%;
 
     --radius: 0.75rem;
   }
@@ -121,9 +121,10 @@ All colors MUST be HSL.
   }
 
   .glassmorphism {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 }
 
