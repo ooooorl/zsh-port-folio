@@ -1,8 +1,8 @@
 import { resumeData } from "@/data/resumeData";
+import { User, Briefcase, MapPin } from "phosphor-react";
 
 const NeofetchCommand = () => {
   const archLogo = `
-                   -\`
                   .o+\`
                  \`ooo/
                 \`+oooo:
@@ -24,9 +24,9 @@ const NeofetchCommand = () => {
   `.trim();
 
   const info = [
-    { label: "User", value: resumeData.name },
-    { label: "Title", value: resumeData.title },
-    { label: "Location", value: resumeData.location },
+    { label: "User", value: resumeData.name, icon: <User size={16} weight="bold" /> },
+    { label: "Title", value: resumeData.title, icon: <Briefcase size={16} weight="bold" /> },
+    { label: "Location", value: resumeData.location, icon: <MapPin size={16} weight="bold" /> },
     { label: "Shell", value: "zsh 5.9" },
     { label: "Terminal", value: "iTerm2" },
     { label: "Email", value: resumeData.email },
@@ -34,10 +34,10 @@ const NeofetchCommand = () => {
   ];
 
   return (
-    <div className="fade-in font-mono text-xs sm:text-sm">
+    <div className="fade-in text-xs sm:text-sm" style={{ fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, system-ui, sans-serif' }}>
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Arch Linux Logo */}
-        <pre className="terminal-command leading-tight whitespace-pre hidden sm:block">
+        <pre className="terminal-command leading-tight whitespace-pre hidden sm:block font-mono">
           {archLogo}
         </pre>
 
@@ -49,7 +49,8 @@ const NeofetchCommand = () => {
           <div className="h-px bg-terminal-border mb-2"></div>
           
           {info.map((item, index) => (
-            <div key={index} className="flex gap-2">
+            <div key={index} className="flex gap-2 items-center">
+              {item.icon && <span className="terminal-prompt">{item.icon}</span>}
               <span className="terminal-prompt font-semibold min-w-[80px]">
                 {item.label}:
               </span>

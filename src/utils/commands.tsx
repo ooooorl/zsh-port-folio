@@ -7,6 +7,7 @@ import ProjectsCommand from "@/components/Commands/ProjectsCommand";
 import ContactCommand from "@/components/Commands/ContactCommand";
 import HelpCommand from "@/components/Commands/HelpCommand";
 import NeofetchCommand from "@/components/Commands/NeofetchCommand";
+import SshCommand from "@/components/Commands/SshCommand";
 
 export const commands: Record<string, TerminalCommand> = {
   about: {
@@ -48,6 +49,11 @@ export const commands: Record<string, TerminalCommand> = {
     name: "neofetch",
     description: "Display system information",
     execute: () => <NeofetchCommand />,
+  },
+  ssh: {
+    name: "ssh",
+    description: "Establish SSH connection",
+    execute: () => <SshCommand />,
   },
 };
 
