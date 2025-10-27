@@ -77,7 +77,8 @@ All colors MUST be HSL.
 
 @layer utilities {
   .terminal-text {
-    @apply text-terminal-text font-mono;
+    @apply text-terminal-text;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
   
   .terminal-prompt {

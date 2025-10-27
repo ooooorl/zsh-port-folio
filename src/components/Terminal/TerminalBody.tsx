@@ -56,6 +56,11 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
       e.preventDefault();
       setInput(suggestion);
       setSuggestion("");
+    } else if (e.key === "l" && e.ctrlKey) {
+      e.preventDefault();
+      onExecuteCommand("clear");
+      setInput("");
+      setSuggestion("");
     }
   };
 
@@ -65,8 +70,9 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
 
   return (
     <div 
-      className="p-6 font-mono text-sm overflow-y-auto max-h-[calc(100vh-200px)] cursor-text"
+      className="p-6 text-sm overflow-y-auto h-full cursor-text"
       onClick={handleTerminalClick}
+      style={{ fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, system-ui, sans-serif' }}
     >
       <CommandHistory history={history} />
       
