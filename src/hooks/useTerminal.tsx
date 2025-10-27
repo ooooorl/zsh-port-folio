@@ -7,6 +7,7 @@ export const useTerminal = () => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [currentCommand, setCurrentCommand] = useState("");
+  const [isSshActive, setIsSshActive] = useState(false);
 
   // Add welcome message with neofetch on mount
   useEffect(() => {
@@ -55,6 +56,11 @@ export const useTerminal = () => {
       return;
     }
 
+    // Check if SSH command
+    if (trimmedInput === "ssh") {
+      setIsSshActive(true);
+    }
+
     const command = commands[trimmedInput];
     
     if (command) {
@@ -101,5 +107,6 @@ export const useTerminal = () => {
     navigateHistory,
     currentCommand,
     setCurrentCommand,
+    isSshActive,
   };
 };

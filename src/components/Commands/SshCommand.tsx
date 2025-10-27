@@ -1,15 +1,54 @@
+import { useState, useEffect } from "react";
 import { resumeData } from "@/data/resumeData";
 
 const SshCommand = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [dots, setDots] = useState("");
+
+  useEffect(() => {
+    // Animate dots
+    const dotsInterval = setInterval(() => {
+      setDots(prev => prev.length >= 3 ? "" : prev + ".");
+    }, 500);
+
+    // Show content after 3 seconds
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearInterval(dotsInterval);
+      clearTimeout(loadingTimeout);
+    };
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fade-in space-y-3">
+        <div className="text-terminal-text">
+          <span className="terminal-command">ssh -i ~/.ssh/personal developer@127.0.0.1</span>
+        </div>
+        <div className="text-muted-foreground ml-4 mt-3 font-mono">
+          <pre className="text-terminal-prompt">
+{`    _____ _____ _    _ 
+   / ____/ ____| |  | |
+  | (___| (___ | |__| |
+   \\___ \\\\___ \\|  __  |
+   ____) |___) | |  | |
+  |_____/_____/|_|  |_|`}
+          </pre>
+          <div className="mt-2">Connecting{dots}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fade-in space-y-3">
       <div className="text-terminal-text">
-        <span className="terminal-prompt">➜</span> Establishing SSH connection...
-      </div>
-      <div className="text-terminal-text ml-4">
         <span className="terminal-command">ssh -i ~/.ssh/personal developer@127.0.0.1</span>
       </div>
-      <div className="text-muted-foreground ml-4 mt-3">
+      <div className="text-green-500 ml-4 mt-3 font-semibold">
         Connection established successfully! ✓
       </div>
 

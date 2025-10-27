@@ -7,9 +7,10 @@ interface TerminalBodyProps {
   history: CommandOutput[];
   onExecuteCommand: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => string | null;
+  isSshActive: boolean;
 }
 
-const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: TerminalBodyProps) => {
+const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory, isSshActive }: TerminalBodyProps) => {
   const [input, setInput] = useState("");
   const [suggestion, setSuggestion] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -77,7 +78,9 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory }: Terminal
       <CommandHistory history={history} />
       
       <div className="flex gap-2 mt-6 items-center">
-        <span className="terminal-prompt select-none">➜</span>
+        <span className={`select-none font-mono ${isSshActive ? 'text-red-500 font-semibold' : 'terminal-prompt'}`}>
+          {isSshActive ? '[root@arch ~]$' : '[orl@arch ~]$'}
+        </span>
         <span className="cursor-blink terminal-prompt">▋</span>
         <div className="relative flex-1">
           <input
