@@ -14,7 +14,7 @@ export const useTerminal = () => {
   useEffect(() => {
     const lastVisit = localStorage.getItem('portfolio-last-visit');
     const now = Date.now();
-    const tenMinutes = 10 * 60 * 1000; // 10 minutes in milliseconds
+    const tenMinutes = 1 * 60 * 1000; // 10 minutes in milliseconds
     
     const shouldShowWelcome = !lastVisit || (now - parseInt(lastVisit)) > tenMinutes;
     
