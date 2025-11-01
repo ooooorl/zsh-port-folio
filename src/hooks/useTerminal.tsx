@@ -20,33 +20,70 @@ export const useTerminal = () => {
     if (shouldShowWelcome) {
       localStorage.setItem('portfolio-last-visit', now.toString());
       
+      const welcomeId = crypto.randomUUID();
       const welcomeOutput: CommandOutput = {
-        id: crypto.randomUUID(),
+        id: welcomeId,
         command: "",
         output: (
-          <div className="space-y-1 fade-in font-mono text-sm">
-            <div className="text-terminal-prompt">&gt; Starting portfolio daemon... done.</div>
-            <div className="text-terminal-prompt">&gt; Deploying backend containers... build successful!</div>
-            <div className="text-terminal-prompt">&gt; Initializing environment variables... success.</div>
-            <div className="text-terminal-prompt">&gt; Backend boot sequence complete — portfolio is live.</div>
-            <div className="text-terminal-prompt">&gt; Starting services: auth ✅ db ✅ api ✅ portfolio ✅</div>
-            <div className="text-terminal-prompt">&gt; Launching backend instance... logs available below.</div>
-            <div className="text-terminal-prompt">&gt; Portfolio server online — uptime: 0 days, 0 hrs, infinite passion.</div>
-            <div className="text-terminal-prompt">&gt; Compiling experience modules... build passed.</div>
-            <div className="text-terminal-prompt">&gt; API routes loaded. Enter a command to explore.</div>
+          <div key={welcomeId}>
+            {/* WelcomeMessage component will be imported dynamically */}
           </div>
         ),
         timestamp: new Date(),
       };
       
-      const neofetchOutput: CommandOutput = {
-        id: crypto.randomUUID(),
-        command: "neofetch",
-        output: commands.neofetch.execute(),
-        timestamp: new Date(),
+      setHistory([welcomeOutput]);
+      
+      // Start the animated welcome sequence
+      const lines = [
+        "> Starting portfolio daemon... done.",
+        "> Deploying backend containers... build successful!",
+        "> Initializing environment variables... success.",
+        "> Backend boot sequence complete — portfolio is live.",
+        "> Starting services: auth ✅ db ✅ api ✅ portfolio ✅",
+        "> Launching backend instance... logs available below.",
+        "> Portfolio server online — uptime: 0 days, 0 hrs, infinite passion.",
+        "> Compiling experience modules... build passed.",
+        "> API routes loaded. Enter a command to explore.",
+      ];
+      
+      let currentLine = 0;
+      const displayNextLine = () => {
+        if (currentLine < lines.length) {
+          const updatedOutput: CommandOutput = {
+            id: welcomeId,
+            command: "",
+            output: (
+              <div className="space-y-1 font-mono text-sm">
+                {lines.slice(0, currentLine + 1).map((line, index) => (
+                  <div key={index} className="text-terminal-prompt fade-in">
+                    {line}
+                  </div>
+                ))}
+              </div>
+            ),
+            timestamp: new Date(),
+          };
+          
+          setHistory([updatedOutput]);
+          currentLine++;
+          setTimeout(displayNextLine, 1000);
+        } else {
+          // After all lines, wait 1 second and show neofetch
+          setTimeout(() => {
+            const neofetchOutput: CommandOutput = {
+              id: crypto.randomUUID(),
+              command: "neofetch",
+              output: commands.neofetch.execute(),
+              timestamp: new Date(),
+            };
+            
+            setHistory(prev => [...prev, neofetchOutput]);
+          }, 1000);
+        }
       };
       
-      setHistory([welcomeOutput, neofetchOutput]);
+      displayNextLine();
     } else {
       const neofetchOutput: CommandOutput = {
         id: crypto.randomUUID(),

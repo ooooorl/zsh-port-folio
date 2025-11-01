@@ -20,8 +20,7 @@ const NeofetchCommand = () => {
    \`/ossssso+/:-        -:/+osssso+-
   \`+sso+:-\`                 \`.-/+oso:
  \`++:.                           \`-/+/
- .\`                                 \`/
-  `.trim();
+ .\`                                 \`/`;
 
   const info = [
     { label: "User", value: resumeData.name, icon: <User size={16} weight="bold" /> },
