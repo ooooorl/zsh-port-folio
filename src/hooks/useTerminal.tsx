@@ -36,15 +36,26 @@ export const useTerminal = () => {
       
       // Start the animated welcome sequence
       const lines = [
-        "> Starting portfolio daemon... done.",
-        "> Deploying backend containers... build successful!",
-        "> Initializing environment variables... success.",
-        "> Backend boot sequence complete — portfolio is live.",
-        "> Starting services: auth ✅ db ✅ api ✅ portfolio ✅",
-        "> Launching backend instance... logs available below.",
-        "> Portfolio server online — uptime: 0 days, 0 hrs, infinite passion.",
-        "> Compiling experience modules... build passed.",
-        "> API routes loaded. Enter a command to explore.",
+        "> Loading configuration files... complete.",
+        "> Establishing database connections... connected.",
+        "> Authenticating developer credentials... verified.",
+        "> Loading middleware stack... success.",
+        "> Spinning up microservices... all systems nominal.",
+        "> Syncing with remote repository... up to date.",
+        "> Registering API endpoints... complete.",
+        "> Portfolio environment: production",
+        "> Memory usage stable. No leaks detected.",
+        "> Monitoring services initialized... watching logs.",
+        "> Running health checks... all services operational.",
+        "> Initiating CI/CD pipeline... deploy successful.",
+        "> Pulling latest experience data from API... done.",
+        "> Server listening on port 3000 — ready to accept requests.",
+        "> Applying migration scripts... experience table updated.",
+        "> Compiling assets and dependencies... build successful.",
+        "> Launching background worker... active.",
+        "> Fetching logs... showing latest commits and projects.",
+        "> Backend metrics: uptime 99.99%, creativity 100%.",
+        "> Developer@portfolio:~$ system status — OK",
       ];
       
       let currentLine = 0;
@@ -69,7 +80,7 @@ export const useTerminal = () => {
           currentLine++;
           setTimeout(displayNextLine, 1000);
         } else {
-          // After all lines, wait 1 second and show neofetch
+          // After all lines, wait 0.5 seconds and show neofetch
           setTimeout(() => {
             const neofetchOutput: CommandOutput = {
               id: crypto.randomUUID(),
@@ -79,7 +90,7 @@ export const useTerminal = () => {
             };
             
             setHistory(prev => [...prev, neofetchOutput]);
-          }, 1000);
+          }, 500);
         }
       };
       
