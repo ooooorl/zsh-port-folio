@@ -6,7 +6,7 @@ const HelpCommand = () => {
     { name: "education", description: "View my educational background" },
     { name: "projects", description: "Check out my projects" },
     { name: "contact", description: "Get in touch with me" },
-    { name: "ssh", description: "SSH connection - ssh -i ~/.ssh/personal developer@127.0.0.1" },
+    { name: "ssh -i ~/.ssh", description: "SSH connection - To retrieve all my information" },
     { name: "neofetch", description: "Display system information" },
     { name: "clear", description: "Clear the terminal" },
     { name: "help", description: "Show this help message" },

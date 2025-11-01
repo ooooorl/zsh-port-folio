@@ -5,9 +5,9 @@ export const resumeData: ResumeData = {
   title: "Software & Backend Developer",
   location: "Davao City, Philippines",
   email: "plaza.orly.omeles@gmail.com",
-  github: "github.com/orlyplaza",
-  linkedin: "linkedin.com/in/orlyplaza",
-  website: "orlyplaza.dev",
+  github: "github.com/ooooorl",
+  linkedin: "www.linkedin.com/in/orly-plaza-71a54024a/",
+  website: "portfolio.orlyplaza.xyz/",
   
   about: [
     "A software and backend developer with 2+ years of professional experience in designing and implementing robust RESTful APIs.",

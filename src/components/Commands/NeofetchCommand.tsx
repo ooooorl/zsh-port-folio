@@ -27,7 +27,7 @@ const NeofetchCommand = () => {
     { label: "User", value: resumeData.name, icon: <User size={16} weight="bold" /> },
     { label: "Title", value: resumeData.title, icon: <Briefcase size={16} weight="bold" /> },
     { label: "Location", value: resumeData.location, icon: <MapPin size={16} weight="bold" /> },
-    { label: "Shell", value: "zsh 5.9", icon: <Terminal size={16} weight="bold" /> },
+    { label: "Shell", value: "zsh 2.9", icon: <Terminal size={16} weight="bold" /> },
     { label: "Terminal", value: "iTerm2", icon: <Terminal size={16} weight="bold" /> },
     { label: "Email", value: resumeData.email, icon: <Envelope size={16} weight="bold" /> },
     { label: "GitHub", value: resumeData.github, icon: <GithubLogo size={16} weight="bold" /> },

@@ -14,7 +14,7 @@ const SshCommand = () => {
     // Show content after 3 seconds
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 3500);
 
     return () => {
       clearInterval(dotsInterval);
@@ -25,9 +25,6 @@ const SshCommand = () => {
   if (isLoading) {
     return (
       <div className="fade-in space-y-3">
-        <div className="text-terminal-text">
-          <span className="terminal-command">ssh -i ~/.ssh/personal developer@127.0.0.1</span>
-        </div>
         <div className="text-muted-foreground ml-4 mt-3 font-mono">
           <pre className="text-terminal-prompt">
 {`    _____ _____ _    _ 
@@ -45,9 +42,6 @@ const SshCommand = () => {
 
   return (
     <div className="fade-in space-y-3">
-      <div className="text-terminal-text">
-        <span className="terminal-command">ssh -i ~/.ssh/personal developer@127.0.0.1</span>
-      </div>
       <div className="text-green-500 ml-4 mt-3 font-semibold">
         Connection established successfully! ✓
       </div>

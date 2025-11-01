@@ -17,13 +17,10 @@ export const useTerminal = () => {
       output: (
         <div className="space-y-2 fade-in">
           <div className="text-xl font-bold terminal-prompt mb-2">
-            Welcome to my terminal portfolio! 👋
+            Starting portfolio daemon... done.
           </div>
           <p className="text-terminal-text">
             Type <span className="terminal-command font-mono">'help'</span> to see available commands.
-          </p>
-          <p className="text-terminal-text">
-            Type <span className="terminal-command font-mono">'about'</span> to learn more about me.
           </p>
         </div>
       ),

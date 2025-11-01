@@ -10,7 +10,7 @@ const TerminalHeader = () => {
              title="Maximize" />
       </div>
       <div className="text-sm text-muted-foreground font-medium select-none">
-        terminal@portfolio
+        orl-arch@zsh-portfolio
       </div>
       <div className="w-16"></div>
     </div>
