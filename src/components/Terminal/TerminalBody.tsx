@@ -8,9 +8,10 @@ interface TerminalBodyProps {
   onExecuteCommand: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => string | null;
   isSshActive: boolean;
+  isWelcomeAnimating: boolean;
 }
 
-const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory, isSshActive }: TerminalBodyProps) => {
+const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory, isSshActive, isWelcomeAnimating }: TerminalBodyProps) => {
   const [input, setInput] = useState("");
   const [suggestion, setSuggestion] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -77,31 +78,33 @@ const TerminalBody = ({ history, onExecuteCommand, onNavigateHistory, isSshActiv
     >
       <CommandHistory history={history} />
       
-      <div className="flex gap-2 mt-6 items-center">
-        <span className={`select-none font-mono ${isSshActive ? 'text-red-500 font-semibold' : 'terminal-prompt'}`}>
-          {isSshActive ? '[root@arch ~]$' : '[orl@arch ~]$'}
-        </span>
-        <span className="cursor-blink terminal-prompt">▋</span>
-        <div className="relative flex-1">
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="w-full bg-transparent outline-none text-terminal-text caret-transparent"
-            spellCheck={false}
-            autoComplete="off"
-            autoFocus
-          />
-          {suggestion && input && suggestion.startsWith(input.toLowerCase()) && (
-            <div className="absolute top-0 left-0 pointer-events-none text-muted-foreground/40">
-              <span className="invisible">{input}</span>
-              {suggestion.slice(input.length)}
-            </div>
-          )}
+      {!isWelcomeAnimating && (
+        <div className="flex gap-2 mt-6 items-center">
+          <span className={`select-none font-mono ${isSshActive ? 'text-red-500 font-semibold' : 'terminal-prompt'}`}>
+            {isSshActive ? '[root@arch ~]$' : '[orl@arch ~]$'}
+          </span>
+          <span className="cursor-blink terminal-prompt">▋</span>
+          <div className="relative flex-1">
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-full bg-transparent outline-none text-terminal-text caret-transparent"
+              spellCheck={false}
+              autoComplete="off"
+              autoFocus
+            />
+            {suggestion && input && suggestion.startsWith(input.toLowerCase()) && (
+              <div className="absolute top-0 left-0 pointer-events-none text-muted-foreground/40">
+                <span className="invisible">{input}</span>
+                {suggestion.slice(input.length)}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
       
       <div ref={terminalEndRef} />
     </div>

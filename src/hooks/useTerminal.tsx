@@ -8,6 +8,7 @@ export const useTerminal = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [currentCommand, setCurrentCommand] = useState("");
   const [isSshActive, setIsSshActive] = useState(false);
+  const [isWelcomeAnimating, setIsWelcomeAnimating] = useState(false);
 
   // Add welcome message with neofetch on mount
   useEffect(() => {
@@ -19,6 +20,7 @@ export const useTerminal = () => {
     
     if (shouldShowWelcome) {
       localStorage.setItem('portfolio-last-visit', now.toString());
+      setIsWelcomeAnimating(true);
       
       const welcomeId = crypto.randomUUID();
       const welcomeOutput: CommandOutput = {
@@ -90,6 +92,7 @@ export const useTerminal = () => {
             };
             
             setHistory(prev => [...prev, neofetchOutput]);
+            setIsWelcomeAnimating(false); // Animation complete
           }, 500);
         }
       };
@@ -175,5 +178,6 @@ export const useTerminal = () => {
     currentCommand,
     setCurrentCommand,
     isSshActive,
+    isWelcomeAnimating,
   };
 };
