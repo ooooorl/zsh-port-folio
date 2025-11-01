@@ -11,30 +11,52 @@ export const useTerminal = () => {
 
   // Add welcome message with neofetch on mount
   useEffect(() => {
-    const welcomeOutput: CommandOutput = {
-      id: crypto.randomUUID(),
-      command: "",
-      output: (
-        <div className="space-y-2 fade-in">
-          <div className="text-xl font-bold terminal-prompt mb-2">
-            Starting portfolio daemon... done.
+    const lastVisit = localStorage.getItem('portfolio-last-visit');
+    const now = Date.now();
+    const tenMinutes = 10 * 60 * 1000; // 10 minutes in milliseconds
+    
+    const shouldShowWelcome = !lastVisit || (now - parseInt(lastVisit)) > tenMinutes;
+    
+    if (shouldShowWelcome) {
+      localStorage.setItem('portfolio-last-visit', now.toString());
+      
+      const welcomeOutput: CommandOutput = {
+        id: crypto.randomUUID(),
+        command: "",
+        output: (
+          <div className="space-y-1 fade-in font-mono text-sm">
+            <div className="text-terminal-prompt">&gt; Starting portfolio daemon... done.</div>
+            <div className="text-terminal-prompt">&gt; Deploying backend containers... build successful!</div>
+            <div className="text-terminal-prompt">&gt; Initializing environment variables... success.</div>
+            <div className="text-terminal-prompt">&gt; Backend boot sequence complete — portfolio is live.</div>
+            <div className="text-terminal-prompt">&gt; Starting services: auth ✅ db ✅ api ✅ portfolio ✅</div>
+            <div className="text-terminal-prompt">&gt; Launching backend instance... logs available below.</div>
+            <div className="text-terminal-prompt">&gt; Portfolio server online — uptime: 0 days, 0 hrs, infinite passion.</div>
+            <div className="text-terminal-prompt">&gt; Compiling experience modules... build passed.</div>
+            <div className="text-terminal-prompt">&gt; API routes loaded. Enter a command to explore.</div>
           </div>
-          <p className="text-terminal-text">
-            Type <span className="terminal-command font-mono">'help'</span> to see available commands.
-          </p>
-        </div>
-      ),
-      timestamp: new Date(),
-    };
-    
-    const neofetchOutput: CommandOutput = {
-      id: crypto.randomUUID(),
-      command: "neofetch",
-      output: commands.neofetch.execute(),
-      timestamp: new Date(),
-    };
-    
-    setHistory([welcomeOutput, neofetchOutput]);
+        ),
+        timestamp: new Date(),
+      };
+      
+      const neofetchOutput: CommandOutput = {
+        id: crypto.randomUUID(),
+        command: "neofetch",
+        output: commands.neofetch.execute(),
+        timestamp: new Date(),
+      };
+      
+      setHistory([welcomeOutput, neofetchOutput]);
+    } else {
+      const neofetchOutput: CommandOutput = {
+        id: crypto.randomUUID(),
+        command: "neofetch",
+        output: commands.neofetch.execute(),
+        timestamp: new Date(),
+      };
+      
+      setHistory([neofetchOutput]);
+    }
   }, []);
 
   const executeCommand = useCallback((input: string) => {
