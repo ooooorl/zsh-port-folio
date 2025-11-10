@@ -29,10 +29,10 @@ module "cloudfront" {
 }
 
 # --- Route53 Module ---
-module "route53" {
-  source = "../../modules/route53"
+# module "route53" {
+#   source = "../../modules/route53"
 
-  zone_name = var.zone_name
-  record_name = "staging.example.com"
-  cloudfront_distribution_domain_name = module.cloudfront.domain_name
-}
+#   zone_name = var.zone_name
+#   record_name = "staging.example.com"
+#   cloudfront_distribution_domain_name = module.cloudfront.domain_name
+# }

@@ -60,3 +60,8 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# CI/CD ignore
+.secrets
+.actrc
+event.json
