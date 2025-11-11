@@ -80,7 +80,7 @@ export const useTerminal = () => {
           
           setHistory([updatedOutput]);
           currentLine++;
-          setTimeout(displayNextLine, 1000);
+          setTimeout(displayNextLine, 50);
         } else {
           // After all lines, wait 0.5 seconds and show neofetch
           setTimeout(() => {
@@ -93,7 +93,7 @@ export const useTerminal = () => {
             
             setHistory(prev => [...prev, neofetchOutput]);
             setIsWelcomeAnimating(false); // Animation complete
-          }, 500);
+          }, 50);
         }
       };
       
