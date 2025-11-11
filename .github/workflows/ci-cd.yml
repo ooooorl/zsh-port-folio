@@ -28,6 +28,11 @@ jobs:
       DYNAMODB_TABLE: ${{ vars.DYNAMODB_TABLE }}
       AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
       AWS_TAG_OWNER: ${{ vars.AWS_TAG_OWNER }}
+    
+    # Ensure only one workflow run per environment at a time
+    concurrency:
+      group: "terraform-${{ github.event.inputs.env }}"
+      cancel-in-progress: true
 
     steps:
       - name: Checkout repository
@@ -49,7 +54,7 @@ jobs:
         run: |
           terraform init \
             -backend-config="bucket=${{ env.AWS_BUCKET_TF_STATE }}" \
-            -backend-config="key=${{ github.event.inputs.env }}/terraform.tfstate" \
+            -backend-config="key=${{ github.event.inputs.env }}-portfolio/terraform.tfstate" \
             -backend-config="region=${{ env.AWS_REGION }}" \
             -backend-config="dynamodb_table=${{ env.DYNAMODB_TABLE }}" \
             -backend-config="encrypt=true"
