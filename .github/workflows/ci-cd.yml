@@ -28,6 +28,7 @@ jobs:
       DYNAMODB_TABLE: ${{ vars.DYNAMODB_TABLE }}
       AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
       AWS_TAG_OWNER: ${{ vars.AWS_TAG_OWNER }}
+      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
     
     # Ensure only one workflow run per environment at a time
     concurrency:
@@ -74,7 +75,8 @@ jobs:
             -var "bucket_name=${{ env.AWS_BUCKET_NAME }}" \
             -var "aws_region=${{ env.AWS_REGION }}" \
             -var "owner=${{ env.AWS_TAG_OWNER }}" \
-            -var "env=${{ github.event.inputs.env }}"
+            -var "env=${{ github.event.inputs.env }}" \
+            -var "project_name=${{ env.PROJECT_NAME }}"
           terraform apply -auto-approve tfplan
         working-directory: infra/environments/${{ github.event.inputs.env }}
 
@@ -82,12 +84,13 @@ jobs:
     name: Build & Deploy Frontend
     runs-on: ubuntu-latest
     needs: terraform
+    environment: ${{ github.event.inputs.env }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
-      CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
 
     steps:
       - name: Checkout repository
@@ -112,7 +115,9 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy to S3
-        run: aws s3 sync ./dist s3://$AWS_BUCKET_NAME/ --delete
+        run: |
+          BUCKET="${AWS_BUCKET_NAME}-${{ github.event.inputs.env }}"
+          aws s3 sync ./dist "s3://$BUCKET/" --delete
 
       - name: Invalidate CloudFront cache
         run: |
