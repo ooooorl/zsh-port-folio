@@ -1,73 +1,27 @@
-# Welcome to your Lovable project
+# **My Macbook Pro Terminal Portfolio inspired**
+An interactive terminal-style portfolio website designed to look and feel like a command-line terminal. Navigate using simple commands to explore projects, skills, and experience.
 
-## Project info
+## **Technology Stack**
+- Frontend: ReactJS
+- Hosting: AWS S3
+- CDN: AWS CloudFront
+- Deployment: Automated CI/CD pipeline
+- Infrastructure as Code (IaC): Terraform
 
-**URL**: https://lovable.dev/projects/ac581cf1-b368-4740-b31f-ed0811309677
+## **Infrastructure**
+This portfolio is deployed using AWS infrastructure:
+- S3 Bucket: Stores static website files
+- CloudFront Distribution: Provides global content delivery with low latency
+- Route 53 (if applicable): DNS management
+- SSL/TLS: Secure HTTPS connections
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ac581cf1-b368-4740-b31f-ed0811309677) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/ac581cf1-b368-4740-b31f-ed0811309677) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## **Commands**
+Type these commands in the terminal:
+- `help` - Show available commands
+- `about` - About me
+- `projects` - My projects
+- `skills` - Technical skills
+- `ssh` - Show all information
+- `experience` - Work history
+- `contact` - Get in touch
+- `clear` - Clear screen
