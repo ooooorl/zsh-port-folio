@@ -65,3 +65,4 @@ terraform.rc
 .secrets
 .actrc
 event.json
+.env
