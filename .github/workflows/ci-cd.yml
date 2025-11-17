@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.env }}
     env:
+      SUBJECT_ALTERNATIVE_NAMES: ${{ vars.SUBJECT_ALTERNATIVE_NAMES }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
@@ -29,6 +30,7 @@ jobs:
       AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
       AWS_TAG_OWNER: ${{ vars.AWS_TAG_OWNER }}
       PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
     
     # Ensure only one workflow run per environment at a time
     concurrency:
@@ -76,7 +78,9 @@ jobs:
             -var "aws_region=${{ env.AWS_REGION }}" \
             -var "owner=${{ env.AWS_TAG_OWNER }}" \
             -var "env=${{ github.event.inputs.env }}" \
-            -var "project_name=${{ env.PROJECT_NAME }}"
+            -var "project_name=${{ env.PROJECT_NAME }}" \
+            -var "domain_name="${{ env.DOMAIN_NAME }} \
+            -var "subject_alternative_names=[\"${{ join('\",\"', split(env.SUBJECT_ALTERNATIVE_NAMES, ',')) }}\"]"
           terraform apply -auto-approve tfplan
         working-directory: infra/environments/${{ github.event.inputs.env }}
 
