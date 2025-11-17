@@ -73,6 +73,8 @@ jobs:
 
       - name: Terraform Plan & Apply
         run: |
+          # Convert comma-separated env var into Terraform list
+          SAN_LIST=$(echo $SUBJECT_ALTERNATIVE_NAMES | sed 's/,/","/g')
           terraform plan -out=tfplan \
             -var "bucket_name=${{ env.AWS_BUCKET_NAME }}" \
             -var "aws_region=${{ env.AWS_REGION }}" \
@@ -80,7 +82,7 @@ jobs:
             -var "env=${{ github.event.inputs.env }}" \
             -var "project_name=${{ env.PROJECT_NAME }}" \
             -var "domain_name="${{ env.DOMAIN_NAME }} \
-            -var "subject_alternative_names=[\"${{ join('\",\"', split(env.SUBJECT_ALTERNATIVE_NAMES, ',')) }}\"]"
+            -var "subject_alternative_names=[\"$SAN_LIST\"]"
           terraform apply -auto-approve tfplan
         working-directory: infra/environments/${{ github.event.inputs.env }}
 
