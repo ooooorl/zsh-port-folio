@@ -20,19 +20,24 @@ module "cloudfront" {
 
   project_name           = var.project_name
   s3_bucket_domain_name  = module.s3_bucket.bucket_domain_name
-  domain_name            = "" # optional custom domain via route53
-  acm_certificate_arn    = "" # optional
+  domain_name            = var.domain_name
+  acm_certificate_arn    = module.acm.acm_certificate_arn
   tags = {
     Environment = var.env
     Project     = var.project_name
   }
 }
 
-# --- Route53 Module ---
-# module "route53" {
-#   source = "../../modules/route53"
+# --- AWS Certificate Manager ---
+module "acm" {
+  source = "../../modules/acm"
 
-#   zone_name = var.zone_name
-#   record_name = "staging.example.com"
-#   cloudfront_distribution_domain_name = module.cloudfront.domain_name
-# }
+  domain_name               = var.domain_name
+  subject_alternative_names = var.subject_alternative_names
+
+  tags = {
+    Owner       = var.owner
+    Environment = var.env
+    CostCenter  = var.env
+  }
+}
