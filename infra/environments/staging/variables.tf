@@ -1,9 +1,3 @@
-# variable "role_arn" {
-#   description = "IAM Role ARN that can access the S3 bucket"
-#   type        = string
-#   sensitive   = true
-# }
-
 variable "bucket_name" {
   description = "S3 bucket base name (will be appended with environment)"
   type        = string
@@ -29,6 +23,22 @@ variable "project_name" {
   description = "Project Name"
   type = string
 }
+
+variable "domain_name" {
+  description = "Domain names"
+  type = string
+}
+
+variable "subject_alternative_names" {
+  description = "Alternative Domain"
+  type = list(string)
+}
+
+# variable "role_arn" {
+#   description = "IAM Role ARN that can access the S3 bucket"
+#   type        = string
+#   sensitive   = true
+# }
 
 # Route53 variables
 # variable "zone_name" {

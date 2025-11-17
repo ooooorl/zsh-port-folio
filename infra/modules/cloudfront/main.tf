@@ -40,13 +40,13 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   # Optional: custom domain, to be wired up with Route53 later
-  aliases = var.domain_name != "" ? [var.domain_name] : []
+  # Currently using cloudflare subdomain that was certified using AWS Certificate Manager
+  aliases = [var.domain_name]
 
   viewer_certificate {
-    cloudfront_default_certificate = var.domain_name == "" ? true : false
-    acm_certificate_arn            = var.domain_name != "" ? var.acm_certificate_arn : null
-    ssl_support_method             = var.domain_name != "" ? "sni-only" : null
-    minimum_protocol_version       = "TLSv1"
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1"
   }
 
   restrictions {
@@ -54,6 +54,22 @@ resource "aws_cloudfront_distribution" "this" {
       restriction_type = "none"
     }
   }
+
+  # Custom Error Response
+  custom_error_response {
+    error_code = 403
+    response_code = 200
+    response_page_path = "/index.html"
+  }
+
+  custom_error_response {
+    error_code = 400
+    response_code = 200
+    response_page_path = "/index.hmtl"
+  }
+
+  # Avoid Downtime
+  wait_for_deployment = true
 
   price_class = "PriceClass_100" # Cheapest (use PriceClass_All for global)
   tags        = var.tags
