@@ -41,7 +41,10 @@ resource "aws_cloudfront_distribution" "this" {
 
   # Optional: custom domain, to be wired up with Route53 later
   # Currently using cloudflare subdomain that was certified using AWS Certificate Manager
-  aliases = [var.domain_name]
+  aliases = [
+    var.domain_name,          # senpai.orlyplaza.xyz
+    "www.${var.domain_name}", # www.senpai.orlyplaza.xyz
+  ]
 
   viewer_certificate {
     acm_certificate_arn      = var.acm_certificate_arn
