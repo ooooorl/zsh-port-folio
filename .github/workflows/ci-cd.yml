@@ -2,6 +2,8 @@ name: CI/CD - Terraform & Frontend Deployment
 
 on:
   workflow_dispatch:
+    branches:
+      - staging
     inputs:
       env:
         description: "Environment to deploy from infra/environments/"
@@ -10,7 +12,6 @@ on:
         type: choice
         options:
           - staging
-          - prod
 
 permissions:
   contents: read
@@ -38,6 +39,12 @@ jobs:
       cancel-in-progress: true
 
     steps:
+      - name: Restrict environment
+        if: ${{ github.ref != 'refs/heads/staging' || github.event.inputs.env != 'staging' }}
+        run: |
+          echo "You can only deploy from staging branch to staging environment."
+          exit 1
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
